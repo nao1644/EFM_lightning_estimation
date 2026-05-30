@@ -1,0 +1,2 @@
+# EFM_lightning_estimation
+地上電場観測により得られた大気電場のデータから
