@@ -1,5 +1,5 @@
 # Site numbers
-SITE = ["01", "2", "3", "4", "5", "6"]
+SITE = ["1", "2", "3", "4", "5", "6"]
 
 # Time correction for each site
 DTLIST = [0, 0, 0, 0, 0, 0]
@@ -11,7 +11,7 @@ SAMPLING_RATE = 20
 ATTENUATOR = 0.5
 
 # Calibration factor 
-C_CALIBRATION = [0.51, 0.67, 1.17, 1.57, 0.63, 0.59]
+C_CALIBRATION = [1., 1., 1., 1., 1., 1.]
 
 ###########################################
 #### DO NOT CHANGE ########################
