@@ -62,13 +62,10 @@ site2
 
 ## コードの動かし方
 注意：本プログラムは、1日単位での計算を想定して作成されています。特に、日付が変わる時間帯を解析する場合は、翌日の観測値も使用するため、最初に `make_reshape.py` を解析対象期間全体に対して実行することを推奨します。ただし、日付が変わる時間帯を考慮しない場合は、この限りではありません。その場合でも、プログラムはエラーなく使用できます。
-
+また、`const.py`と`const.f90`で計算に必要な定義を行います。それぞれの中身については以下を参照してください。
 ### const.py
 `const.py` では、各 Python プログラム内で使用する定数を設定します。
-`const.py` は、以下のように直接実行するプログラムではありません。
-```shell-session
-$ python3 const.py
-```
+`const.py` は直接実行するプログラムではありません。
 ただし、解析条件に応じて内容を編集する必要があります。
 
 事前準備で作成したサイトディレクトリの番号のみを、以下に入力してください。デフォルトでは、6つのサイトが存在することを想定しています。
@@ -112,8 +109,44 @@ LEN_TIME = SAMPLING_RATE * SECONDS_PER_DAY
 ```python
 RR = 1. / ATTENUATOR
 ```
-### make_reshapefile.py
+### const.f90
+`const.f90` では、Fortran プログラム内で使用する定数を設定します。
+`const.f90` は直接実行するプログラムではありません。 
+ただし、解析条件に応じて内容を編集する必要があります。
 
+事前準備で作成したサイトディレクトリの番号のみを、以下に入力してください。デフォルトでは、6つのサイトが存在することを想定しています。
+``` Fortran
+character(len=1) :: site(6) = ["1", "2", "3", "4", "5", "6"]
+```
+以下は`character :: site`を定義することで自動的に定義されます。
+``` Fortran
+integer, parameter :: site_num = size(site)
+```
+出力される水平の発雷位置を直交座標に変換する際に、中心座標として使用します。緯度経度を度数で定義します。
+``` Fortran
+real(rk), parameter :: lon_center = 0.0_rk ! longitude of standard site
+real(rk), parameter :: lat_center = 0.0_rk ! latitude of standard site
+```
+各観測サイトの緯度経度を度数で定義します。
+``` Fortran
+real(rk), parameter :: lat_degree(site_num) = [0._rk, 0._rk, 0._rk, 0._rk, 0._rk, 0._rk] ! degree, latitude of sites
+real(rk), parameter :: lon_degree(site_num) = [0._rk, 0._rk, 0._rk, 0._rk, 0._rk, 0._rk] ! degree, longitude of sites
+```
+各観測サイトの緯度経度を`lon_center`, `lat_center`中心とした直交座標(m)で定義します。
+``` Fortran
+real(rk), parameter :: site_lat(site_num) = [0._rk, 0._rk, 0._rk, 0._rk, 0._rk, 0._rk] ! m, latitude of sites
+real(rk), parameter :: site_lon(site_num) = [0._rk, 0._rk, 0._rk, 0._rk, 0._rk, 0._rk] ! m, longitude of site, west distance
+```
+各観測サイトの高度を(m)で定義します。
+``` Fortran
+real(rk), parameter :: site_alt(site_num) = [0._rk, 0._rk, 0._rk, 0._rk, 0._rk, 0._rk] ! m, altitude of sites
+```
+ここ以下については物理量ですので変更の必要はないです。
+
+### make_reshapefile.py
+```shell-session
+$ python3 make_reshapefile.py
+```
 
 
 ### judgement_bigpulse.py
