@@ -147,7 +147,7 @@ real(rk), parameter :: site_lon(site_num) = [0._rk, 0._rk, 0._rk, 0._rk, 0._rk, 
 ``` Fortran
 real(rk), parameter :: site_alt(site_num) = [0._rk, 0._rk, 0._rk, 0._rk, 0._rk, 0._rk] ! m, altitude of sites
 ```
-ここ以下については物理量ですので変更の必要はないです。
+ここ以下については物理量ですので、変更の必要はないです。
 
 ### make_reshapefile.py
 ```shell-session
@@ -156,18 +156,34 @@ $ python3 make_reshapefile.py
 
 
 ### judgement_bigpulse.py
+```shell-session
+$ python3 judgement_bigpulse.py
+```
 
 
 ### judgement_smallpulse.py
+```shell-session
+$ python3 judgement_smallpulse.py
+```
 
 
 ### search_lightning_time.py
+```shell-session
+$ python3 search_lightning_time.py
+```
 
 
 ### search_calculation_time.py
+```shell-session
+$ python3 search_calculation_time.py
+```
 
 
 ### calculate_location.f90
+```shell-session
+$ gfortran -g -fbacktrace -fcheck=all const.f90 monopole_model.f90 calculate_location.f90 -o a.out
+$ nohup ./a.out >& log &
+```
 
 
 ## 参考文献
