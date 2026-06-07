@@ -1,5 +1,9 @@
 # EFM_lightning_estimation
-地上電場観測により得られた大気電場のデータから、発雷位置及び中和電荷量を点電荷モデル(Jacobson and Krider, 1976; Krehbiel et al., 1979; Maier and Krider, 1986)を使用して導出します。本コードを使用する際は、Iwai et al., 2026, JAE (in preparation)の引用をお願いします。
+本コードは、地上電場観測により得られた大気電場データを用いて、発雷位置および中和電荷量を点電荷モデル（Jacobson and Krider, 1976; Krehbiel et al., 1979; Maier and Krider, 1986）に基づいて推定するための解析コードです。
+本コードを使用した成果を公表する際には、以下の論文を引用してください。
+```text
+Iwai et al. (2026), JAE, in preparation.
+```
 
 ## コードの構成
 コードは以下の順番で使用します。
@@ -9,6 +13,10 @@
 - search_lightning_time.py
 - search_calculation_time.py
 - calculate_location.f90
+以下のコードは関数や定数を格納するコードです。
+- const.py
+- const.f90
+- monopole_model.f90  
 
 ## 環境設定
 本コードは以下の環境で動作確認を行いました。
