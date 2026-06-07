@@ -1,5 +1,5 @@
 # EFM_lightning_estimation
-[English version](README_ver.ENGLISH.md)  
+[English version of this README](README_ver.ENGLISH.md)  
 本コードは、地上電場観測により得られた大気電場データを用いて、発雷位置および中和電荷量を点電荷モデル（Jacobson and Krider, 1976; Krehbiel et al., 1979; Maier and Krider, 1986）に基づいて推定するための解析コードです。
 本コードを使用した成果を公表する際には、以下の論文を引用してください。
 ```text
