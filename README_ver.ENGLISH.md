@@ -1,4 +1,5 @@
 # EFM_lightning_estimation
+[Japanese version](README.md)  
 This code is an analysis program for estimating lightning discharge locations and neutralized charge amounts from atmospheric electric field data obtained by ground-based electric field observations, based on a point charge model (Jacobson and Krider, 1976; Krehbiel et al., 1979; Maier and Krider, 1986).
 When publishing results obtained using this code, please cite the following paper.
 ```text
